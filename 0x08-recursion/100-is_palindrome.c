@@ -1,55 +1,47 @@
-#include "main.h"
+#include "holberton.h"
+
 /**
-*_strlen_recursion - returns lenght of a string.
-*@s: pointer to string.
+*_strlen - return length of string
+*@str: string to check
 *
-*Return: lenght of string.
+*Return: length of str
 */
-int _strlen_recursion(char *s)
+int _strlen(char *str)
 {
-if (*s)
-{
-return (1 + _strlen_recursion(s + 1));
-}
+if (*str == '\0')
 return (0);
+else
+return (1 + _strlen(str + 1));
 }
 
 /**
-*helperFunction - check if palindrome.
-*@s: pointer to string.
-*@fi: first index.
-*@li: lastIndex.
+*check_palindrome - checks to see if a string is a palindrome
+*@l: left hand index
+*@r: right hand index
+*@p: possible palindrome
 *
-*Return: 0 if not palindrome, 1 if palindrome.
+*Return: 1 if palindrome 0 if not
 */
-int helperFunction(char *s, int fi, int li)
+int check_palindrome(int l, int r, char *p)
 {
-if (fi < li && s[fi] == s[li])
-{
-return (helperFunction(s, fi + 1, li - 1));
-}
-if (s[fi] != s[li])
-{
-return (0);
-}
+if (l >= r)
 return (1);
+else if (p[l] != p[r])
+return (0);
+else
+return (check_palindrome(l + 1, r - 1, p));
 }
 
 /**
-*is_palindrome - checks if string is palindrome or not.
-*@s: pointer to string.
+*is_palindrome - states if a string is a palindrome
+*@s: string to check
 *
-*Return: 1 if string is palindrome 0 if not.
+*Return: 1 if palindrome, 0 if not
 */
 int is_palindrome(char *s)
 {
-int fi, li;
+int i;
 
-fi = 0;
-li = _strlen_recursion(s) - 1;
-
-if (!*s)
-return (1);
-
-return (helperFunction(s, fi, li));
+i = _strlen(s) - 1;
+return (check_palindrome(0, i, s));
 }
