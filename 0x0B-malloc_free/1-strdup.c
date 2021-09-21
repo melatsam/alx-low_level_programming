@@ -20,7 +20,7 @@ while (str[len] != '\0')
 len++;
 }
 len++;
-nstr = malloc(len * sizeof(*str));
+nstr = malloc(len *sizeof(*str));
 if (nstr == NULL)
 return (NULL);
 while (i <= len)
