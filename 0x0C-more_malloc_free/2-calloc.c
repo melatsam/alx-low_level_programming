@@ -12,10 +12,10 @@ void *ptr;
 
 if (!nmemb || !size)
 return (NULL);
-ptr = malloc(size *nmemb);
+ptr = malloc(size * nmemb);
 if (!ptr)
 return (NULL);
-_memset(ptr, 0, size *nmemb);
+_memset(ptr, 0, size * nmemb);
 return (ptr);
 }
 
